@@ -1,0 +1,10 @@
+C:\Development\UrlDigger\UrlDigger\ExpressUnit\bin\Debug\ExpressUnit.dll
+C:\Development\UrlDigger\UrlDigger\ExpressUnit\bin\Debug\ExpressUnit.pdb
+C:\Development\UrlDigger\UrlDigger\ExpressUnit\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\UrlDigger\UrlDigger\ExpressUnit\obj\Debug\ExpressUnit.dll
+C:\Development\UrlDigger\UrlDigger\ExpressUnit\obj\Debug\ExpressUnit.pdb
+C:\Development\ExpressUnit\ExpressUnit\bin\Debug\ExpressUnit.dll
+C:\Development\ExpressUnit\ExpressUnit\bin\Debug\ExpressUnit.pdb
+C:\Development\ExpressUnit\ExpressUnit\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\ExpressUnit\ExpressUnit\obj\Debug\ExpressUnit.dll
+C:\Development\ExpressUnit\ExpressUnit\obj\Debug\ExpressUnit.pdb

@@ -1,0 +1,16 @@
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\UnitTester.exe
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\UnitTester.pdb
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\ExpressUnit.pdb
+C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Debug\UnitTester.exe
+C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Debug\UnitTester.pdb
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\CoolNess.dll
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\CoolNess.pdb
+C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Debug\ExpressUnit.dll
+C:\Development\ExpressUnit\UnitTester\obj\Debug\UnitTester.exe
+C:\Development\ExpressUnit\UnitTester\obj\Debug\UnitTester.pdb
+C:\Development\ExpressUnit\UnitTester\bin\Debug\UnitTester.exe
+C:\Development\ExpressUnit\UnitTester\bin\Debug\UnitTester.pdb
+C:\Development\ExpressUnit\UnitTester\bin\Debug\ExpressUnit.dll
+C:\Development\ExpressUnit\UnitTester\bin\Debug\ExpressUnit.pdb
+C:\Development\ExpressUnit\UnitTester\obj\Debug\ResolveAssemblyReference.cache
