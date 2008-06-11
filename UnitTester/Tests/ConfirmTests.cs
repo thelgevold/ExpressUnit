@@ -70,15 +70,38 @@ namespace ExpressUnitTests
         }
 
         [UnitTest]
-        public void ConfirmTestNulls1()
+        public void ConfirmDifferent1()
         {
-            Confirm.Equals(null, "");
+            Confirm.Different(null, "");
         }
 
         [UnitTest]
-        public void ConfirmTestNulls2()
+        public void ConfirmDifferent2()
         {
-            Confirm.Equals("", null);
+            Confirm.Different("", null);
+        }
+
+       
+        [UnitTest]
+        public void ConfirmDifferent3()
+        {
+            try
+            {
+                Confirm.Different(null, null);
+                throw new EqualityException(null,null);
+            }
+            catch (EqualityException ) {}
+        }
+
+        [UnitTest]
+        public void ConfirmTestNulls4()
+        {
+            try
+            {
+                Confirm.Different(1, 1);
+                throw new EqualityException(1,1);
+            }
+            catch (EqualityException ) { }
         }
 
         [UnitTest]
@@ -93,6 +116,20 @@ namespace ExpressUnitTests
             Confirm.Equals(1, 1);
 
         }
+
+        [UnitTest]
+        public void ConfirmEqualsWithDifferentValuesTest()
+        {
+            try
+            {
+                Confirm.Equals(1, 2);
+                throw new EqualityException(1, 2);
+            }
+            catch (EqualityException) { }
+
+        }
+
+        
 
         
     }

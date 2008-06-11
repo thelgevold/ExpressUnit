@@ -14,3 +14,10 @@ C:\Development\ExpressUnit\UnitTester\bin\Release\UnitTester.exe
 C:\Development\ExpressUnit\UnitTester\bin\Release\UnitTester.pdb
 C:\Development\ExpressUnit\UnitTester\bin\Release\ExpressUnit.dll
 C:\Development\ExpressUnit\UnitTester\bin\Release\ExpressUnit.pdb
+C:\ExpressUnit\UnitTester\obj\Release\UnitTester.exe
+C:\ExpressUnit\UnitTester\obj\Release\UnitTester.pdb
+C:\ExpressUnit\UnitTester\obj\Release\ResolveAssemblyReference.cache
+C:\ExpressUnit\UnitTester\bin\Release\UnitTester.exe
+C:\ExpressUnit\UnitTester\bin\Release\UnitTester.pdb
+C:\ExpressUnit\UnitTester\bin\Release\ExpressUnit.dll
+C:\ExpressUnit\UnitTester\bin\Release\ExpressUnit.pdb

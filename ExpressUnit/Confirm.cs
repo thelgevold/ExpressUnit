@@ -75,6 +75,31 @@ namespace ExpressUnit
             throw new EqualityException(expected, actual);
         }
 
+        public static bool Different(object expected,object actual)
+        {
+            if (expected == null && actual == null)
+            {
+                throw new EqualityException(expected, actual);
+            }
+            else if (expected == null)
+            {
+                return true;
+            }
+            else if (actual == null)
+            {
+                return true;
+            }
+            else
+            {
+                if (expected.Equals(actual) == false)
+                {
+                    return true;
+                }
+            }
+
+            throw new EqualityException(expected, actual);
+        }
+
         
         
         public static bool ExceptionThrown(Type expectedExceptionType,TargetMethod target)

@@ -1,0 +1,10 @@
+C:\ExpressUnit\ExpressUnitGui\bin\Release\ExpressUnitGui.exe
+C:\ExpressUnit\ExpressUnitGui\bin\Release\ExpressUnitGui.pdb
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ResolveAssemblyReference.cache
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ExpressUnitGui.Properties.Resources.resources
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ExpressUnitGui.csproj.GenerateResource.Cache
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ExpressUnitGui.exe
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ExpressUnitGui.pdb
+C:\ExpressUnit\ExpressUnitGui\obj\Release\ExpressUnitGui.mainForm.resources
+C:\ExpressUnit\ExpressUnitGui\bin\Release\ExpressUnit.dll
+C:\ExpressUnit\ExpressUnitGui\bin\Release\ExpressUnit.pdb

@@ -39,6 +39,30 @@ namespace ExpressUnit
             }
         }
 
+        public string ResultText
+        {
+            get
+            {
+                string msg = string.Empty;
+                if (Passed == false)
+                {
+                    if (Exception.InnerException != null)
+                    {
+                        msg = string.Format("(Failed): {0}", Exception.InnerException.Message);
+                    }
+                    else if (Exception != null)
+                    {
+                        msg = Exception.Message;
+                    }
+                }
+                else
+                {
+                    msg = "(Passed)";
+                }
+                return string.Format("{0} {1}",TestName,msg);
+            }
+        }
+
         public Exception Exception
         {
             get

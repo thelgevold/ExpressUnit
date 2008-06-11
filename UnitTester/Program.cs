@@ -5,18 +5,20 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 using ExpressUnit;
-
+using System.Windows.Forms;
 namespace ExpressUnitTests
 {
     class Program
     {
         static void Main(string[] args)
         {
-            UnitTestManager unitTestManager = new UnitTestManager();
-            unitTestManager.ExecuteAllUnitTests(new DisplayTestResults(PrintResults));
+           UnitTestManager unitTestManager = new UnitTestManager();
+           unitTestManager.ExecuteAllUnitTests(new DisplayTestResults(PrintResults));
 
-            Console.ReadKey();
+           Console.ReadKey();
         }
+
+        
 
         private static void PrintResults(IList<TestResult> results)
         {

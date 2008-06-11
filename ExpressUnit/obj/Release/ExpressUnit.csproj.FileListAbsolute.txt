@@ -8,3 +8,8 @@ C:\Development\ExpressUnit\ExpressUnit\bin\Release\ExpressUnit.pdb
 C:\Development\ExpressUnit\ExpressUnit\obj\Release\ResolveAssemblyReference.cache
 C:\Development\ExpressUnit\ExpressUnit\obj\Release\ExpressUnit.dll
 C:\Development\ExpressUnit\ExpressUnit\obj\Release\ExpressUnit.pdb
+C:\ExpressUnit\ExpressUnit\bin\Release\ExpressUnit.dll
+C:\ExpressUnit\ExpressUnit\bin\Release\ExpressUnit.pdb
+C:\ExpressUnit\ExpressUnit\obj\Release\ResolveAssemblyReference.cache
+C:\ExpressUnit\ExpressUnit\obj\Release\ExpressUnit.dll
+C:\ExpressUnit\ExpressUnit\obj\Release\ExpressUnit.pdb

@@ -16,22 +16,50 @@ namespace ExpressUnit
 
         public void ExecuteAllUnitTests(DisplayTestResults displayTestResults)
         {
+            displayTestResults(RunTests());
+        }
+
+        public List<TestResult> RunTests()
+        {
             List<TestResult> results = new List<TestResult>();
             Type[] types = GetUnitTestTypes();
 
-            foreach(Type t in types)
+            foreach (Type t in types)
             {
-                results.AddRange(RunTests(t));    
+                results.AddRange(RunTests(t));
             }
 
-            displayTestResults(results);
+            return results;
         }
 
-        private List<TestResult> RunTests(Type t)
+        public TestResult RunTest(Type type,MemberInfo m)
+        {
+            TestResult result = new TestResult();
+            try
+            {
+                result.TestName = m.Name;
+                type.InvokeMember(m.Name, BindingFlags.InvokeMethod, null, Activator.CreateInstance(type), null);
+                result.Passed = true;
+            }
+            catch (UnitTestFailedException assertEx)
+            {
+                result.Passed = false;
+                result.Exception = assertEx;
+            }
+            catch (System.Exception ex)
+            {
+                result.Passed = false;
+                result.Exception = ex;
+            }
+
+            return result;
+        }
+
+        public List<TestResult> RunTests(Type t)
         {
             List<TestResult> results = new List<TestResult>();
             
-            foreach (MemberInfo m in GetUnitTest(t))
+            foreach (MemberInfo m in GetUnitTests(t))
             {
                 TestResult result = new TestResult();
                 result.TestName = m.Name;
@@ -86,7 +114,7 @@ namespace ExpressUnit
             Console.WriteLine();
         }
 
-        private MemberInfo[] GetUnitTest(Type t)
+        public MemberInfo[] GetUnitTests(Type t)
         {
             var q = from m in t.GetMembers()
                     where Attribute.IsDefined(m, typeof(UnitTest)) == true && Attribute.IsDefined(m, typeof(Ignore)) == false
@@ -95,7 +123,7 @@ namespace ExpressUnit
             return q.ToArray<MemberInfo>();
         }
        
-        private Type[] GetUnitTestTypes()
+        public Type[] GetUnitTestTypes()
         {
             Assembly a = Assembly.GetEntryAssembly();
             Type[] types = a.GetTypes(); 

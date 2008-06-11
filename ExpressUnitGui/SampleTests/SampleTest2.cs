@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using ExpressUnit;
 
-namespace UnitTester.Tests
+namespace ExpressUnitGui.SampleTests
 {
     [TestClass]
-    public class SampleTests
+    public class ContractTests
     {
         [UnitTest]
-        public void AddTest()
+        public void AddContractTest()
         {
-            Confirm.Equals(5, 5+3);
+          
         }
 
         [UnitTest]
-        public void AddTest2()
+        public void DeleteContractTest()
         {
-            Confirm.Equals(3, 1 + 2);
+            Confirm.Equals(1, 2);
         }
     }
 }
