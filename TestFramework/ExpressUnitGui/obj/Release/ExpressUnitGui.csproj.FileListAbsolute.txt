@@ -1,0 +1,15 @@
+C:\TestFramework\ExpressUnitGui\obj\Release\ResolveAssemblyReference.cache
+C:\TestFramework\ExpressUnitGui\obj\Release\ExpressUnitGui.mainForm.resources
+C:\TestFramework\ExpressUnitGui\obj\Release\ExpressUnitGui.Properties.Resources.resources
+C:\TestFramework\ExpressUnitGui\obj\Release\ExpressUnitGui.csproj.GenerateResource.Cache
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnitGui.exe.config
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnitGui.exe
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnitGui.pdb
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnit.dll
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnit.pdb
+C:\TestFramework\ExpressUnitGui\obj\Release\ExpressUnitGui.exe
+C:\TestFramework\ExpressUnitGui\obj\Release\ExpressUnitGui.pdb
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnitModel.dll
+C:\TestFramework\ExpressUnitGui\bin\Release\ExpressUnitModel.pdb
+C:\TestFramework\ExpressUnitGui\bin\Release\UnitTester.pdb
+C:\TestFramework\ExpressUnitGui\bin\Release\UnitTester.dll

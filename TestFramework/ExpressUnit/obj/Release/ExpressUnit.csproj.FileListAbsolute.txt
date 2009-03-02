@@ -1,0 +1,7 @@
+C:\TestFramework\ExpressUnit\bin\Release\ExpressUnit.dll
+C:\TestFramework\ExpressUnit\bin\Release\ExpressUnit.pdb
+C:\TestFramework\ExpressUnit\bin\Release\ExpressUnitModel.dll
+C:\TestFramework\ExpressUnit\bin\Release\ExpressUnitModel.pdb
+C:\TestFramework\ExpressUnit\obj\Release\ResolveAssemblyReference.cache
+C:\TestFramework\ExpressUnit\obj\Release\ExpressUnit.dll
+C:\TestFramework\ExpressUnit\obj\Release\ExpressUnit.pdb
