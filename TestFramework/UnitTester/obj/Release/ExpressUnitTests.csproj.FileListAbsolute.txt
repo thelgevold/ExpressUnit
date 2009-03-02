@@ -1,7 +1,0 @@
-C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Release\UnitTester.exe
-C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Release\UnitTester.pdb
-C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Release\ExpressUnit.dll
-C:\Development\UrlDigger\UrlDigger\UnitTester\bin\Release\ExpressUnit.pdb
-C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Release\ResolveAssemblyReference.cache
-C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Release\UnitTester.exe
-C:\Development\UrlDigger\UrlDigger\UnitTester\obj\Release\UnitTester.pdb

@@ -1,7 +1,0 @@
-C:\TestFramework\SampleTests\bin\Debug\SampleTests.dll
-C:\TestFramework\SampleTests\bin\Debug\SampleTests.pdb
-C:\TestFramework\SampleTests\obj\Debug\ResolveAssemblyReference.cache
-C:\TestFramework\SampleTests\obj\Debug\SampleTests.dll
-C:\TestFramework\SampleTests\obj\Debug\SampleTests.pdb
-C:\TestFramework\SampleTests\bin\Debug\ExpressUnitModel.dll
-C:\TestFramework\SampleTests\bin\Debug\ExpressUnitModel.pdb
