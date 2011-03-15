@@ -113,10 +113,6 @@
     <Compile Include="UnitTests\TestMethodViewModelTest.cs" />
     <Compile Include="UnitTests\TestResultViewModelTest.cs" />
     <Compile Include="UnitTests\XmlManagerTest.cs" />
-    <Compile Include="WebTests\SampleWebTest2.cs" />
-    <Compile Include="WebTests\SampleWebTest3.cs" />
-    <Compile Include="WebTests\SampleWebTest4.cs" />
-    <Compile Include="WebTests\SampleWebTest5.cs" />
     <Compile Include="WebTests\Helper.cs" />
     <Compile Include="WebTests\SampleWebTest.cs" />
   </ItemGroup>
