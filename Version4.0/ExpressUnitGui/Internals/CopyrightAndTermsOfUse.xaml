@@ -47,7 +47,9 @@
 
             You should have received a copy of the GNU General Public License<LineBreak/>
             along with this program.  If not, see http://www.gnu.org/licenses/.<LineBreak/><LineBreak/>
-
+        
+            Please contact Torgeir Helgevold at torgeir@helgevold-consulting.com <LineBreak/> with questions regarding ExpressUnit. <LineBreak/><LineBreak/>
+                
             External dependencies/libraries:<LineBreak/>
             ExpressUnit includes ThoughtWorks.Selenium.Core.dll <LineBreak/>
             which is released under Apache License, Version 2.0.<LineBreak/>
