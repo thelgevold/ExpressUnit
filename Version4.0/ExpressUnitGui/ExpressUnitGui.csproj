@@ -242,9 +242,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GNU_General_Public_License.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Library\" />
   </ItemGroup>
   <ItemGroup>
