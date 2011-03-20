@@ -42,10 +42,13 @@
     <Grid>
         <TabControl x:Name="tab" SelectionChanged="TabControl_SelectionChanged" Background="White" >
             <TabItem Header="Tests">
-            <eu:TestMethodView x:Name="tests"></eu:TestMethodView>
+                <eu:TestMethodView x:Name="tests"></eu:TestMethodView>
             </TabItem>
             <TabItem Header="Use Cases">
                 <eu:UseCase x:Name="useCases"></eu:UseCase>
+            </TabItem>
+            <TabItem Header="Copyright">
+                <eu:CopyrightAndTermsOfUse></eu:CopyrightAndTermsOfUse>
             </TabItem>
         </TabControl>
         
