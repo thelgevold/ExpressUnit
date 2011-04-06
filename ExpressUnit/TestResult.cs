@@ -98,6 +98,11 @@ namespace ExpressUnit
             }
         }
 
+        public override string ToString()
+        {
+            return String.Format("{0} - {1} - Duration: {2}", TestName, Passed ? "Pass" : "Fail", Duration);
+        }
+
 
     }
 }

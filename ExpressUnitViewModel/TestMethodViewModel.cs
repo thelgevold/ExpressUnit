@@ -395,6 +395,7 @@ namespace ExpressUnitViewModel
             TestResult res = TestManager.RunTest(method);
           
             AddTestResult(res,method);
+            Console.WriteLine(res.ToString());
         }
 
         private void AddTestResult(TestResult res, TestMethod method)
