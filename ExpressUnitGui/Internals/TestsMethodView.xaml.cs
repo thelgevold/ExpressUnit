@@ -84,13 +84,13 @@ namespace ExpressUnitGui
                         ));
         }
 
-        private void CloseApp()
+        private void CloseApp(int exitCode)
         {
             Dispatcher.Invoke(DispatcherPriority.Normal,
                    new Action(
                        delegate()
                        {
-                           Application.Current.Shutdown();
+                           Application.Current.Shutdown(exitCode);
                        }
                        )); 
 

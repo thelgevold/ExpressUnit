@@ -35,7 +35,7 @@ namespace ExpressUnitViewModel
 {
     public delegate void AddResultControl(TestResult res);
     public delegate void ClearResultControl();
-    public delegate void CloseApp();
+    public delegate void CloseApp(int exitCode);
 
     public class TestMethodViewModel : BaseViewModel
     {
@@ -351,7 +351,7 @@ namespace ExpressUnitViewModel
 
             if (ConsoleMode == true)
             {
-                CloseApp();
+                CloseApp(testsFailed);
             }
 
             RotatorVisibility = Visibility.Hidden;
