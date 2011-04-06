@@ -1,0 +1,56 @@
+﻿<Window x:Class="ExpressUnitGui.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:eu="clr-namespace:ExpressUnitGui"
+    Title="ExpressUnit" Height="650" Width="950" Background="Black">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                 Name="Border"
+                                 Cursor="Hand"   
+                                 Background="LightGreen"
+                                 BorderBrush="Black" 
+                                 BorderThickness="1,1,1,1" 
+                                 CornerRadius="6,6,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               ContentSource="Header"
+               Margin="12,2,12,2"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGreen" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="Green" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <TabControl x:Name="tab" SelectionChanged="TabControl_SelectionChanged" Background="White" >
+            <TabItem Header="Tests">
+                <eu:TestMethodView x:Name="tests"></eu:TestMethodView>
+            </TabItem>
+            <TabItem Header="Use Cases">
+                <eu:UseCase x:Name="useCases"></eu:UseCase>
+            </TabItem>
+            <TabItem Header="Copyright">
+                <eu:CopyrightAndTermsOfUse></eu:CopyrightAndTermsOfUse>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Window>

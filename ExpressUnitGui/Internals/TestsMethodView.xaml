@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="ExpressUnitGui.TestMethodView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:eu="clr-namespace:ExpressUnitGui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="White">
+    
+    <Grid Grid.Row="0" Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="300" Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="2"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="3" Background="Green"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0"  Text="Last Test Run"/>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding LastTestRun}" x:Name="txtLastTestRun"/>
+            <TextBlock Grid.Row="2" Grid.Column="0"  Text="Duration"/>
+            <TextBlock Grid.Row="2" Grid.Column="1"  Text="{Binding TotalRunTime}" x:Name="txtDuration"/>
+            
+            <TextBlock Grid.Row="3" Grid.Column="0"  Text="Tests Passed"/>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Text="{Binding TestsPassed}" x:Name="txtPassed"/>
+                <TextBlock Text="/"></TextBlock>
+                <TextBlock Text="{Binding TotalTestCount}" x:Name="txtTotal"/>
+            </StackPanel>
+            
+            <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="Bold" Foreground="#FFFF0023" Text="Tests Failed"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" FontWeight="Bold" Foreground="#FFFF0023" Text="{Binding TestsFailed}" x:Name="txtFailed"/>
+
+            <Border Grid.Row="5" Grid.ColumnSpan="3" Background="Green"/>
+
+            <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Left" Width="65">
+                <Button BorderBrush="Black" Background="LightGreen" BorderThickness="2" Content="Run" Command="{Binding RunTestsCommand}"/>
+                <eu:ProgressSpinner Visibility="{Binding RotatorVisibility}"></eu:ProgressSpinner>
+            </StackPanel>
+            
+            <ComboBox BorderBrush="Green" BorderThickness="2" Grid.Row="7" Grid.ColumnSpan="2" Grid.Column="0" SelectedValue="{Binding SelectedItem}" Width="250" Height="25" HorizontalAlignment="Left" MaxWidth="250" x:Name="cmbTestType">
+                <ComboBoxItem x:Name="UnitTests" FontWeight="Bold" Content="Unit tests"/>
+                <ComboBoxItem x:Name="IntegrationTests" FontWeight="Bold" Content="Integration tests"/>
+                <ComboBoxItem x:Name="WebTests" FontWeight="Bold" Content="Web tests"/>
+                <ComboBoxItem x:Name="AllTests" FontWeight="Bold" Content="All tests"/>
+            </ComboBox>
+            
+            <Border Grid.Row="8" Grid.ColumnSpan="3" Background="Green"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0">
+                    <eu:TestTreeView BorderThickness="0" ItemsSource="{Binding Path=Tests}" x:Name="testTree" CurrentlySelectedItem="{Binding SelectedTestsToRun,Mode=TwoWay}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" Grid.Column="0" Foreground="Green">
+                        <TreeView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Run" Command="{Binding RunTestsFromTreeViewCommand}" />
+                            </ContextMenu>
+                        </TreeView.ContextMenu>
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Path=Tests}">
+                                <TextBlock Text="{Binding Path=Name}"/>
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="5" Height="5" Fill="{Binding Path=Color}" Margin="5,0"/>
+                                            <TextBlock Text="{Binding Path=Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </eu:TestTreeView>
+                </Grid>
+                <GridSplitter Background="Gray" Grid.Row="1" Height="5" HorizontalAlignment="Stretch" MinHeight="5" VerticalAlignment="Top"  ResizeDirection="Rows"  />
+
+                <Grid Grid.Row="2">
+                    <Border BorderThickness="0" BorderBrush="Gray">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" BorderBrush="Blue">
+                            <StackPanel x:Name="resultPanel" DataContext="{Binding TestResults}" />
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ExpressUnitGui.CopyrightAndTermsOfUse"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="450" Width="600">
+   
+    <UserControl.Resources>
+        <BeginStoryboard x:Key="storyBoard">
+        <Storyboard>
+
+            <DoubleAnimation
+                              Storyboard.TargetName="outerBorder"
+                              Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                              From="0" To="10" Duration="0:10:0"
+                               />
+        </Storyboard>
+            </BeginStoryboard>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border  Loaded="outerBorder_Loaded"   Grid.Row="0" BorderThickness="0" CornerRadius="10" x:Name="outerBorder" Background="{Binding Path=backgroundGradientBrush}" RenderTransformOrigin="0.5,0.5" Margin="0,0.379,0,0">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform></ScaleTransform>
+                </TransformGroup>
+            </Border.RenderTransform>
+           
+            <TextBlock FontSize="14">
+               
+            ExpressUnit -Testing framework <LineBreak/>
+            Copyright (C) 2011 Torgeir Helgevold<LineBreak/><LineBreak/>
+
+            This program is free software: you can redistribute it and/or modify<LineBreak/>
+            it under the terms of the GNU General Public License as published by<LineBreak/>
+            the Free Software Foundation, either version 3 of the License, or<LineBreak/>
+            (at your option) any later version.<LineBreak/><LineBreak/>
+
+            This program is distributed in the hope that it will be useful,<LineBreak/>
+            but WITHOUT ANY WARRANTY; without even the implied warranty of<LineBreak/>
+            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<LineBreak/>
+            GNU General Public License for more details.<LineBreak/><LineBreak/>
+
+            You should have received a copy of the GNU General Public License<LineBreak/>
+            along with this program.  If not, see http://www.gnu.org/licenses/.<LineBreak/><LineBreak/>
+        
+            Please contact Torgeir Helgevold at torgeir@helgevold-consulting.com <LineBreak/> with questions regarding ExpressUnit. <LineBreak/><LineBreak/>
+                
+            External dependencies/libraries:<LineBreak/>
+            ExpressUnit includes ThoughtWorks.Selenium.Core.dll <LineBreak/>
+            which is released under Apache License, Version 2.0.<LineBreak/>
+            You should have received a copy of the Apache License, Version 2.0 <LineBreak/>
+            along with this program. If not, see 
+            http://www.apache.org/licenses/LICENSE-2.0    
+
+            </TextBlock>    
+        </Border>
+
+    </Grid>
+</UserControl>
