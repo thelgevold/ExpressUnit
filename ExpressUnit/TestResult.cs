@@ -32,6 +32,12 @@ namespace ExpressUnit
             
         }
 
+        public string Fixture
+        {
+            get;
+            set;
+        }
+
         public string UseCase
         {
             get;
@@ -100,7 +106,7 @@ namespace ExpressUnit
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} - Duration: {2}", TestName, Passed ? "Pass" : "Fail", Duration);
+            return String.Format("{3} - {0} - {1} - Duration: {2}", Passed ? "PASS" : "FAIL", TestName, Duration, Fixture);
         }
 
 

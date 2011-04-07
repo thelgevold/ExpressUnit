@@ -329,13 +329,14 @@ namespace ExpressUnitViewModel
             TotalTestCount = allTests.Count;
 
             TaskFactory factory = CreateTaskFactory();
-            List<Task> tasks = new List<Task>();
+            
 
             var allTestsGroupedByOrder = allTests.GroupBy(t => t.Order);
 
             //runs all tests in order using n threads
             foreach (var group in allTestsGroupedByOrder)
             {
+                List<Task> tasks = new List<Task>();
                 foreach (TestMethod method in group)
                 {
                     tasks.Add(factory.StartNew((obj) => Run(obj as TestMethod), method));
@@ -347,7 +348,7 @@ namespace ExpressUnitViewModel
             TotalRunTime = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts.Hours, ts.Minutes, ts.Seconds); 
            
             XDocument doc = XmlManager.CreateTestReport(this.TestResults);
-            doc.Save("report.xml", SaveOptions.DisableFormatting);
+            doc.Save("report.xml", SaveOptions.None);
 
             if (ConsoleMode == true)
             {
@@ -395,7 +396,6 @@ namespace ExpressUnitViewModel
             TestResult res = TestManager.RunTest(method);
           
             AddTestResult(res,method);
-            Console.WriteLine(res.ToString());
         }
 
         private void AddTestResult(TestResult res, TestMethod method)
@@ -415,6 +415,18 @@ namespace ExpressUnitViewModel
 
                 this.addResultControl(res);
                 this.TestResults.Add(res);
+
+                string summaryLine = String.Format("{0} / {1} Tests Run - {2} Succeeded - {3} Failed", TestsPassed + TestsFailed, TotalTestCount, TestsPassed, TestsFailed);
+                string resultString = res.ToString();
+
+                int lineSize = Math.Max(summaryLine.Length, resultString.Length);
+
+                StringBuilder resultOutput = new StringBuilder();
+                resultOutput.AppendLine(String.Empty.PadRight(lineSize, '*'));
+                resultOutput.AppendLine(summaryLine);
+                resultOutput.AppendLine(resultString);
+                resultOutput.AppendLine(String.Empty.PadRight(lineSize, '*'));
+                Console.WriteLine(resultOutput.ToString());
             }
         }
 

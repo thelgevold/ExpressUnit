@@ -28,10 +28,7 @@ namespace UnitTester.IntegrationTests
     public class IntegrationTest1
     {
         [IntegrationTest]
-        public void Test1() 
-        {
-            Thread.Sleep(10000);
-        }
+        public void Test1() { }
 
         [IntegrationTest]
         public void Test2() { }

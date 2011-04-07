@@ -102,7 +102,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="test.cs" />
     <Compile Include="UnitTests\AttributeManagerTest.cs" />
     <Compile Include="UnitTests\ErrorTests.cs" />
     <Compile Include="UnitTests\ExceptionThrownTest.cs" />
@@ -112,9 +111,6 @@
     <Compile Include="UnitTests\TestManagerTest.cs" />
     <Compile Include="UnitTests\TestMethodViewModelTest.cs" />
     <Compile Include="UnitTests\TestResultViewModelTest.cs" />
-    <Compile Include="UnitTests\XmlManagerTest.cs" />
-    <Compile Include="WebTests\Helper.cs" />
-    <Compile Include="WebTests\SampleWebTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpressUnitModel\ExpressUnitModel.csproj">

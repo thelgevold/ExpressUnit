@@ -17,6 +17,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Reflection;
@@ -32,19 +33,21 @@ namespace ExpressUnit
         public TestResult RunTest(TestMethod testMethod)
         {
             TestResult result;
+            string fixture = null;
             try
             {
                 var instance = Activator.CreateInstance(testMethod.Type);
+                fixture = instance.GetType().Name;
                 if (testMethod.TestSetup != null)
                 {
                     testMethod.Type.InvokeMember(testMethod.TestSetup.Name, BindingFlags.InvokeMethod, null, instance, null);
                 }
 
-                DateTime start = DateTime.Now;
+                Stopwatch testTime = Stopwatch.StartNew();
                 testMethod.Type.InvokeMember(testMethod.Name, BindingFlags.InvokeMethod, null, instance, null);
-                TimeSpan timeSpan = DateTime.Now - start;
+                testTime.Stop();
                 result = EnsureCorrectTestResult(testMethod.MemberInfo);
-                result.Duration = timeSpan;
+                result.Duration = testTime.Elapsed;
 
                 if (testMethod.TestTearDown != null)
                 {
@@ -55,6 +58,8 @@ namespace ExpressUnit
             {
                 result = HandleFailedTest(testMethod.MemberInfo, ex);
             }
+
+            result.Fixture = fixture;
             result.TestName = testMethod.Name;
             result.UseCase = testMethod.UseCase;
             return result;
