@@ -454,6 +454,18 @@ namespace ExpressUnitViewModel
                 resultOutput.AppendLine(summaryLine);
                 resultOutput.AppendLine(resultString);
                 resultOutput.AppendLine(String.Empty.PadRight(lineSize, '*'));
+
+                if (testsFailed > 0)
+                {
+                    resultOutput.AppendLine("Failed tests:");
+                    var failedTests = testResults.Where(t => t.Passed == false);
+                    foreach(var test in failedTests)
+                    {
+                        resultOutput.AppendLine(test.ToString());
+                    }
+                    resultOutput.AppendLine(String.Empty.PadRight(lineSize, '*'));
+                }
+                
                 Console.WriteLine(resultOutput.ToString());
             }
         }
