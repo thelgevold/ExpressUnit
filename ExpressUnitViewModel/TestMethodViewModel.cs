@@ -17,6 +17,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using ExpressUnit;
@@ -56,6 +57,7 @@ namespace ExpressUnitViewModel
         private Visibility rotatorVisibility = Visibility.Hidden;
         private int totalTestCount;
         private ITest testsToRun;
+        private bool xmlReportSaved;
         
         private object testResultLock = new object();
 
@@ -316,7 +318,14 @@ namespace ExpressUnitViewModel
 
         private void RunAllTests()
         {
-            DateTime start = DateTime.Now;
+            this.xmlReportSaved = false;
+            
+            System.Threading.Timer saveTimer = null;
+            if (ConsoleMode == true)
+            {
+                saveTimer = new System.Threading.Timer(state => EnsureXmlReportIsSaved(), null, 30000, 30000);
+            }
+
             TotalRunTime = string.Empty;
             RotatorVisibility = Visibility.Visible;
             TestResults = new List<TestResult>();
@@ -325,6 +334,7 @@ namespace ExpressUnitViewModel
             TestsPassed = 0;
             TestsFailed = 0;
 
+            Stopwatch testsExecutionTime = Stopwatch.StartNew();
             List<TestMethod> allTests = GetTestsToRun();
             TotalTestCount = allTests.Count;
 
@@ -344,11 +354,16 @@ namespace ExpressUnitViewModel
                 Task.WaitAll(tasks.ToArray());
             }
 
-            TimeSpan ts = (DateTime.Now - start);
-            TotalRunTime = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", ts.Hours, ts.Minutes, ts.Seconds); 
-           
-            XDocument doc = XmlManager.CreateTestReport(this.TestResults);
-            doc.Save("report.xml", SaveOptions.None);
+            testsExecutionTime.Stop();
+
+            TotalRunTime = string.Format("{0:D2} hrs, {1:D2} mins, {2:D2} secs", testsExecutionTime.Elapsed.Hours, testsExecutionTime.Elapsed.Minutes, testsExecutionTime.Elapsed.Seconds);
+
+            if (saveTimer != null)
+            {
+                saveTimer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+            }
+
+            EnsureXmlReportIsSaved();
 
             if (ConsoleMode == true)
             {
@@ -356,6 +371,19 @@ namespace ExpressUnitViewModel
             }
 
             RotatorVisibility = Visibility.Hidden;
+        }
+        
+        public void EnsureXmlReportIsSaved()
+        {
+            lock (testResultLock)
+            {
+                if (xmlReportSaved == false && testResults.Any() == true)
+                {
+                    XDocument doc = XmlManager.CreateTestReport(this.TestResults);
+                    doc.Save("report.xml", SaveOptions.None);
+                    xmlReportSaved = true;
+                }
+            }
         }
 
         private List<TestMethod> GetTestsToRun()

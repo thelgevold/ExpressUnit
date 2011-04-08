@@ -21,6 +21,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using System.Xml.Linq;
 using ExpressUnit;
 using ExpressUnitViewModel;
 
@@ -65,6 +66,15 @@ namespace ExpressUnitGui
                 ConsoleMode = false;
             }
             
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            if (TestMethodViewModel != null)
+            {
+                TestMethodViewModel.EnsureXmlReportIsSaved();
+            }
+            base.OnExit(e);
         }
     }
 }
