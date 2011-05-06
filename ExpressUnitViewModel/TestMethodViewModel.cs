@@ -318,7 +318,11 @@ namespace ExpressUnitViewModel
 
         private void RunAllTests()
         {
-            this.xmlReportSaved = false;
+            lock(testResultLock)
+            {
+                this.xmlReportSaved = false;    
+            }
+            
             
             System.Threading.Timer saveTimer = null;
             if (ConsoleMode == true)
@@ -443,6 +447,8 @@ namespace ExpressUnitViewModel
 
                 this.addResultControl(res);
                 this.TestResults.Add(res);
+                
+                xmlReportSaved = false;
 
                 string summaryLine = String.Format("{0} / {1} Tests Run - {2} Succeeded - {3} Failed", TestsPassed + TestsFailed, TotalTestCount, TestsPassed, TestsFailed);
                 string resultString = res.ToString();
