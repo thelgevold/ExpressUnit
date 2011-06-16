@@ -33,6 +33,7 @@ namespace ExpressUnit
         public TestResult RunTest(TestMethod testMethod)
         {
             TestResult result;
+            Stopwatch testTime = null;
             string fixture = null;
             try
             {
@@ -43,7 +44,7 @@ namespace ExpressUnit
                     testMethod.Type.InvokeMember(testMethod.TestSetup.Name, BindingFlags.InvokeMethod, null, instance, null);
                 }
 
-                Stopwatch testTime = Stopwatch.StartNew();
+                testTime = Stopwatch.StartNew();
                 testMethod.Type.InvokeMember(testMethod.Name, BindingFlags.InvokeMethod, null, instance, null);
                 testTime.Stop();
                 result = EnsureCorrectTestResult(testMethod.MemberInfo);
@@ -56,7 +57,13 @@ namespace ExpressUnit
             }
             catch (System.Exception ex)
             {
-                result = HandleFailedTest(testMethod.MemberInfo, ex);
+                TimeSpan testDuration = TimeSpan.Zero;
+                if (testTime != null)
+                {
+                    testTime.Stop();
+                    testDuration = testTime.Elapsed;
+                }
+                result = HandleFailedTest(testMethod.MemberInfo, testDuration, ex);
             }
 
             result.Fixture = fixture;
@@ -65,9 +72,11 @@ namespace ExpressUnit
             return result;
         }
 
-        private TestResult HandleFailedTest(MemberInfo m, Exception ex)
+        private TestResult HandleFailedTest(MemberInfo m, TimeSpan duration, Exception ex)
         {
             TestResult result = new TestResult();
+            result.Duration = duration;
+
             if (AttributeManager.ExceptionIsExcepted(m, ex))
             {
                 result.Passed = true;
