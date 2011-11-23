@@ -132,7 +132,7 @@ namespace ExpressUnit
             return string.Format("{0} {1}", testName, "(PASSED)");
         }
 
-        public IList<TestFixture> GetTests(string testType)
+        public IList<TestFixture> GetTests(string testType,string testCategory)
         {
             List<Type> allTypes = new List<Type>();
 
@@ -166,7 +166,7 @@ namespace ExpressUnit
             {
                 TestFixture test = new TestFixture();
                 test.Name = t.Name;
-                test.Tests = methodManager.GetTestsInTestClass(t, testType);
+                test.Tests = methodManager.GetTestsInTestClass(t, testType,testCategory);
 
                 if (test.Tests.Count > 0)
                 {

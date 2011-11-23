@@ -44,6 +44,11 @@ namespace ExpressUnitGui
             set;
         }
 
+        public static string CurrentTestCategory
+        {
+            get; set;
+        }
+
         public static TestMethodViewModel TestMethodViewModel
         {
             get;
@@ -54,18 +59,33 @@ namespace ExpressUnitGui
         {
             base.OnStartup(e);
 
-            ExpressUnitConfigurationSection config = (ExpressUnitConfigurationSection)System.Configuration.ConfigurationManager.GetSection("ExpressUnitConfiguration");
+            ExpressUnitConfigurationSection config = (ExpressUnitConfigurationSection)ConfigurationManager.GetSection("ExpressUnitConfiguration");
             RunAllTests = config.RunTestsOnStartup;
 
-            if (e.Args.Length == 1)
+            if (e.Args.Length >= 1)
             {
                 ConsoleMode = true;
+
+                if (e.Args.Any(a => a.Contains("-category")))
+                {
+                    CurrentTestCategory = GetCommandLineValue("-category",e.Args.ToList());
+                }
             }
             else
             {
                 ConsoleMode = false;
             }
             
+        }
+
+        private string GetCommandLineValue(string key,List<string> args)
+        {
+            int index = args.IndexOf(key);
+            if(index == -1 || index == args.Count - 1)
+            {
+                return null;
+            }
+            return args[index + 1].Trim();
         }
 
         protected override void OnExit(ExitEventArgs e)

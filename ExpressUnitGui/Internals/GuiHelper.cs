@@ -32,6 +32,7 @@ namespace ExpressUnitGui
             TestMethodViewModel viewModel = new TestMethodViewModel(addResultContol, clearTestResult);
             viewModel.CloseApp = closeApp;
             viewModel.ConsoleMode = App.ConsoleMode;
+            viewModel.CurrentTestCategory = App.CurrentTestCategory;
           
             return viewModel;
         }

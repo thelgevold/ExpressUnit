@@ -41,7 +41,6 @@ namespace ExpressUnitGui
     /// </summary>
     public partial class TestMethodView : UserControl
     {
-        private TestManager testManager = new TestManager();
         public TestMethodView()
         {
             InitializeComponent();

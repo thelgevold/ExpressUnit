@@ -58,6 +58,8 @@ namespace ExpressUnitViewModel
         private int totalTestCount;
         private ITest testsToRun;
         private bool xmlReportSaved;
+
+        public string CurrentTestCategory { get; set; }
         
         private object testResultLock = new object();
 
@@ -289,7 +291,7 @@ namespace ExpressUnitViewModel
         public void LoadTests(string testType)
         {
             TestManager manager = new TestManager();
-            Tests = manager.GetTests(testType);
+            Tests = manager.GetTests(testType,CurrentTestCategory);
         }
 
         private void RunTests()
@@ -344,8 +346,8 @@ namespace ExpressUnitViewModel
 
             TaskFactory factory = CreateTaskFactory();
             
-
-            var allTestsGroupedByOrder = allTests.GroupBy(t => t.Order);
+            // group by order and order by the order
+            var allTestsGroupedByOrder = allTests.GroupBy(t => t.Order).OrderBy(t => t.Key);
 
             //runs all tests in order using n threads
             foreach (var group in allTestsGroupedByOrder)
@@ -494,7 +496,7 @@ namespace ExpressUnitViewModel
         private void LoadTests()
         {
             TestManager manager = new TestManager();
-            Tests = manager.GetTests(SelectedItem.Name);
+            Tests = manager.GetTests(SelectedItem.Name,CurrentTestCategory);
         }
        
     }

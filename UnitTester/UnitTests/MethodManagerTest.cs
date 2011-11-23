@@ -44,27 +44,27 @@ namespace UnitTester.UnitTests
         [ExceptionThrown(typeof(ArgumentException))]
         public void MethodManager_GetTestsInTestClass_Will_Throw_Exception_Argument_Exception_If_Test_Type_Is_Undefined_Test()
         {
-            manager.GetTestsInTestClass(typeof(MethodManagerTest), "Undefined");
+            manager.GetTestsInTestClass(typeof(MethodManagerTest), "Undefined",null);
         }
 
         [UnitTest]
         public void MethodManager_GetTestsInTestClass_Will_Find_Test_Setup_Method_On_For_Every_Test()
         {
-            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All);
+            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All, null);
             Confirm.IsTrue(tests.All(t => t.TestSetup != null));
         }
 
         [UnitTest]
         public void MethodManager_GetTestsInTestClass_Will_Find_Test_Tear_Down_Method_On_For_Every_Test()
         {
-            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All);
+            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All, null);
             Confirm.IsTrue(tests.All(t => t.TestTearDown != null));
         }
 
         [UnitTest(UseCase = "All tests methods for a type will be located")]
         public void MethodManager_GetTestsInTestClass_Will_Find_Five_Unit_Tests_And_One_Integration_Test_In_Current_Type_Test()
         {
-            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All);
+            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.All, null);
 
             Confirm.Equal(6, tests.Count);
 
@@ -93,7 +93,7 @@ namespace UnitTester.UnitTests
         [UnitTest(UseCase = "All tests methods for a type will be located")]
         public void MethodManager_GetTestsInTestClass_Will_Find_Five_Unit_Tests_In_Current_Type_Test()
         {
-            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.UnitTest);
+            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.UnitTest, null);
 
             Confirm.Equal(5, tests.Count);
 
@@ -117,7 +117,7 @@ namespace UnitTester.UnitTests
         [IntegrationTest(UseCase = "All tests methods for a type will be located")]
         public void MethodManager_GetTestsInTestClass_Will_Find_One_Integration_Test_In_Current_Type_Test()
         {
-            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.IntegrationTest);
+            IList<TestMethod> tests = manager.GetTestsInTestClass(typeof(MethodManagerTest), TestType.IntegrationTest, null);
 
             Confirm.Equal(1, tests.Count);
             TestMethod method = tests.Where(t => t.Name == "MethodManager_GetTestsInTestClass_Will_Find_One_Integration_Test_In_Current_Type_Test").Single();

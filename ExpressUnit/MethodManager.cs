@@ -26,7 +26,7 @@ namespace ExpressUnit
 {
     public class MethodManager
     {
-        public IList<TestMethod> GetTestsInTestClass(Type t, string testType)
+        public IList<TestMethod> GetTestsInTestClass(Type t, string testType,string testCategory)
         {
             MemberInfo[] memberInfo = GetMemberInfo(t, testType);
 
@@ -43,6 +43,20 @@ namespace ExpressUnit
                 m.TestTearDown = testTearDown;
 
                 TestAttribute attribute = ((TestAttribute)info.GetCustomAttributes(typeof(TestAttribute), false)[0]);
+
+                //check the category before including test
+                if(string.IsNullOrWhiteSpace(testCategory) == false)
+                {
+                    TestCategory category = ((TestCategory) info.GetCustomAttributes(typeof (TestCategory), false).FirstOrDefault());
+                    if(category == null)
+                    {
+                        continue;
+                    }
+                    if(category.Categories.Any(a => a == testCategory) == false)
+                    {
+                        continue;
+                    }
+                }
 
                 m.UseCase = attribute.UseCase ?? "Undefined";
                 m.Order = attribute.Order;

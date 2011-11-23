@@ -147,7 +147,6 @@
     <Compile Include="Internals\CopyrightAndTermsOfUse.xaml.cs">
       <DependentUpon>CopyrightAndTermsOfUse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DemoTest.cs" />
     <Compile Include="Internals\GuiHelper.cs" />
     <Compile Include="Internals\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
